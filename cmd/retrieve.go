@@ -9,7 +9,7 @@ import (
 func RetrieveCmd() *cobra.Command {
 	var command = &cobra.Command{
 		Use:          "retrieve",
-		Short:        "Retrieve an initial token using parameters in config file",
+		Short:        "retrieve an initial token using parameters in config file",
 		Example:      `  wtr retrieve`,
 		SilenceUsage: false,
 	}
