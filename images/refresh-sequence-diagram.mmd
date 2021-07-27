@@ -1,0 +1,6 @@
+sequenceDiagram
+    participant User
+    participant Webex
+    User->>+Webex: webexapis.com/v1/access_token
+    Note right of Webex: grant_type=refresh_token<br/>client_id<br/>client_secret<br/>refresh_token<br/>scope<br/>state
+    Webex-->>-User: New Token

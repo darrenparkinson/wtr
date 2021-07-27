@@ -14,20 +14,7 @@ This command is used to obtain the initial token.
 
 * `wtr retrieve`
 
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Webex
-    User->>+Webex: webexapis.com/v1/authorize
-    Note right of Webex: client_id<br/>response_type=code<br/>redirect_uri<br/>scope<br/>state
-    Webex-->>-User: Browser Login Prompt
-    User->>+Webex: Username/Password
-    Webex-->>-User: Redirect with Code
-    User->>+Webex: Exchange Code for token<br/>https://api.ciscospark.com/v1/access_token
-    Note right of Webex: grant_type=authorization_code<br/>client_id<br/>client_secret<br/>code<br/>redirect_uri<br/>state
-    Webex-->>-User: Access Token Response
-```
+![Retrieve Diagram](images/retrieve-sequence-diagram.png "Retrieve Sequence Diagram")
 
 ### Refresh
 
@@ -35,20 +22,13 @@ This command is used to refresh a token before it expires using the details prov
 
 * `wtr refresh`
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Webex
-    User->>+Webex: webexapis.com/v1/access_token
-    Note right of Webex: grant_type=refresh_token<br/>client_id<br/>client_secret<br/>refresh_token<br/>scope<br/>state
-    Webex-->>-User: New Token
-```
+![Refresh Diagram](images/refresh-sequence-diagram.png "Refresh Sequence Diagram")
 
 ## Configuration
 
 Information required to begin the process includes:
 
-| Item          | Description                                  | YAML         | Env Var            |
+| Item          | Description                                  | json         | Env Var            |
 |---------------|----------------------------------------------|--------------|--------------------|
 | AppID         | Webex App ID for integration                 | appid        | WEBEX_APPID        |
 | Secret        | Secret Associated to the App ID              | secret       | WEBEX_SECRET       |
