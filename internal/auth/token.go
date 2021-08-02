@@ -30,12 +30,12 @@ Errors: %s
 TrackingID: %s`, t.AccessToken, t.ExpiresIn, t.RefreshToken, t.RefreshTokenExpiresIn, t.Message, t.Errors, t.TrackingID)
 }
 
-// SaveToken saves the token details to the config file
+// Save saves the token details to the config file
 func (t WebexAccessTokenResponse) Save() error {
 	expiration := time.Now().Unix() + int64(t.ExpiresIn)
-	refresh_expiration := time.Now().Unix() + int64(t.RefreshTokenExpiresIn)
+	refreshExpiration := time.Now().Unix() + int64(t.RefreshTokenExpiresIn)
 	viper.Set("expiration", expiration)
-	viper.Set("refresh_expiration", refresh_expiration)
+	viper.Set("refresh_expiration", refreshExpiration)
 	viper.Set("token", t.AccessToken)
 	viper.Set("refresh_token", t.RefreshToken)
 	return viper.WriteConfig()

@@ -14,6 +14,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// RetrieveCmd is the entry point for the Refresh command
 func RetrieveCmd() *cobra.Command {
 	var command = &cobra.Command{
 		Use:          "retrieve",

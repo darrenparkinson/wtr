@@ -3,7 +3,7 @@ package auth
 import (
 	"context"
 	"crypto/rand"
-	_ "embed"
+	_ "embed" // for embedding success and error html
 	"encoding/hex"
 	"encoding/json"
 	"errors"

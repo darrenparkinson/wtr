@@ -13,6 +13,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// RefreshCmd is the entry point for the Refresh command
 func RefreshCmd() *cobra.Command {
 	var command = &cobra.Command{
 		Use:          "refresh",
