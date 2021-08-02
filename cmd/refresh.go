@@ -7,39 +7,40 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/darrenparkinson/wtr/internal/auth"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-func RetrieveCmd() *cobra.Command {
+func RefreshCmd() *cobra.Command {
 	var command = &cobra.Command{
-		Use:          "retrieve",
-		Short:        "retrieve an initial token using parameters in config file",
-		Example:      `  wtr retrieve`,
+		Use:          "refresh",
+		Short:        "refresh an existing token using details saved to the config file",
+		Example:      `  wtr refresh`,
 		SilenceUsage: false,
 	}
 
 	command.Flags().BoolP("output", "o", false, "output token details to console")
 	command.Flags().BoolP("json", "j", false, "output token details as json to console")
-	command.Flags().IntP("timeout", "t", 60, "timeout in seconds to wait for response")
 
 	command.RunE = func(cmd *cobra.Command, args []string) error {
 		// Flags
 		verbose, _ := cmd.Flags().GetBool("debug")
 		output, _ := cmd.Flags().GetBool("output")
 		jsonf, _ := cmd.Flags().GetBool("json")
-		timeout, _ := cmd.Flags().GetInt("timeout")
 		// Config
 		clientID := viper.GetString("clientid")
 		secret := viper.GetString("secret")
-		scopes := viper.GetString("scopes")
-		redirectPort := viper.GetString("redirectPort")
+		expiry := viper.GetInt64("expiration")
+		refreshToken := viper.GetString("refresh_token")
 
-		if clientID == "" || secret == "" {
-			log.Fatal(errors.New("clientid and secret required"))
+		if refreshToken == "" || expiry == 0 {
+			log.Fatal(errors.New("refreshToken and expiry required in configuration file: run retrieve first"))
+		}
+
+		if clientID == "" || secret == "" || refreshToken == "" {
+			log.Fatal(errors.New("clientid, secret and refreshToken required in configuration file: run retrieve first"))
 		}
 
 		log.SetOutput(ioutil.Discard)
@@ -47,18 +48,12 @@ func RetrieveCmd() *cobra.Command {
 			log.SetOutput(os.Stderr)
 		}
 
-		webex := auth.Webex{
-			ClientID:     clientID,
-			ClientSecret: secret,
-			Scopes:       strings.Split(scopes, " "),
-			RedirectPort: redirectPort,
-		}
-		log.Printf("retrieving access token: timeout %ds", timeout)
-		t, err := webex.GetAccessToken(timeout)
+		log.Println("refreshing access token")
+		t, err := auth.RefreshToken(clientID, secret, refreshToken)
 		if err != nil {
 			log.Fatal(err)
 		}
-		log.Printf("token retrieved: expires %s", t.Expires())
+		log.Printf("token refreshed: expires %s", t.Expires())
 		if output {
 			fmt.Println(t)
 		}

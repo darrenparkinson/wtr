@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/darrenparkinson/wtr/cmd"
 
@@ -22,7 +23,12 @@ func main() {
 	_ = viper.SafeWriteConfig()
 	_ = viper.ReadInConfig()
 
+	viper.SetEnvPrefix("webex")
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	viper.AutomaticEnv()
+
 	cmdRetrieve := cmd.RetrieveCmd()
+	cmdRefresh := cmd.RefreshCmd()
 
 	var rootCmd = &cobra.Command{
 		Use:     "wtr",
@@ -34,12 +40,16 @@ func main() {
 	}
 	rootCmd.SilenceUsage = true
 	rootCmd.SilenceErrors = true
+	rootCmd.CompletionOptions.DisableDefaultCmd = true
 
 	rootCmd.AddCommand(cmdRetrieve)
+	rootCmd.AddCommand(cmdRefresh)
+
+	rootCmd.PersistentFlags().BoolP("debug", "d", false, "verbose debug output")
 
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
-	wtrLogo := aec.RedF.Apply(wtrFigletStr)
-	rootCmd.SetVersionTemplate(fmt.Sprintf("%s\nv{{.Version}}\n", wtrLogo))
+	wtrLogo := aec.GreenF.Apply(wtrFigletStr)
+	rootCmd.SetVersionTemplate(fmt.Sprintf("%s\nv{{.Version}}\nhttps://github.com/darrenparkinson/wtr\n", wtrLogo))
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -48,7 +58,7 @@ func main() {
 }
 
 const wtrFigletStr = `          _        
-__      _| |_ _ __ 
+__      _| |_ _ __ 2
 \ \ /\ / / __| '__|
  \ V  V /| |_| |   
   \_/\_/  \__|_|                                                                                                                     

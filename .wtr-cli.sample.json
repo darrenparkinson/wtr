@@ -1,0 +1,6 @@
+{
+  "clientid": "<YOUR CLIENT ID HERE>",
+  "secret": "<YOUR SECRET HERE>",
+  "scopes": "spark:kms spark:all",
+  "redirectPort": 6855
+}

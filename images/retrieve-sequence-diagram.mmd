@@ -6,6 +6,6 @@ sequenceDiagram
     Webex-->>-User: Browser Login Prompt
     User->>+Webex: Username/Password
     Webex-->>-User: Redirect with Code
-    User->>+Webex: Exchange Code for token<br/>https://api.ciscospark.com/v1/access_token
+    User->>+Webex: Exchange Code for token<br/>webexapis.com/v1/access_token
     Note right of Webex: grant_type=authorization_code<br/>client_id<br/>client_secret<br/>code<br/>redirect_uri<br/>state
     Webex-->>-User: Access Token Response
