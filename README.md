@@ -1,8 +1,8 @@
 # WTR<sup>2</sup> - Webex Token Retriever / Refresher
 
 <!-- [![Status](https://img.shields.io/badge/status-wip-yellow)](https://github.com/darrenparkinson/wtr) -->
-[![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/wtr)](https://goreportcard.com/report/github.com/darrenparkinson/wtr)
-[![GoDoc](https://godoc.org/github.com/darrenparkinson/wtr?status.svg)](https://godoc.org/github.com/darrenparkinson/wtr) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/wtr)](https://goreportcard.com/report/github.com/darrenparkinson/wtr)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- [![GoDoc](https://godoc.org/github.com/darrenparkinson/wtr?status.svg)](https://godoc.org/github.com/darrenparkinson/wtr)  -->
 <!-- ![GitHub All Releases](https://img.shields.io/github/downloads/darrenparkinson/wtr/total) -->
 
 
