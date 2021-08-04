@@ -1,7 +1,7 @@
 # WTR<sup>2</sup> - Webex Token Retriever / Refresher
 
 <!-- [![Status](https://img.shields.io/badge/status-wip-yellow)](https://github.com/darrenparkinson/wtr) -->
-[![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/wtr)](https://goreportcard.com/report/github.com/darrenparkinson/wtr)  ![GitHub](https://img.shields.io/github/license/darrenparkinson/wtr) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/darrenparkinson/wtr)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/darrenparkinson/wtr) [![Go Report Card](https://goreportcard.com/badge/github.com/darrenparkinson/wtr)](https://goreportcard.com/report/github.com/darrenparkinson/wtr)  ![GitHub](https://img.shields.io/github/license/darrenparkinson/wtr?color=brightgreen) [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/darrenparkinson/wtr)
 <!-- [![GoDoc](https://godoc.org/github.com/darrenparkinson/wtr?status.svg)](https://godoc.org/github.com/darrenparkinson/wtr)  -->
 <!-- ![GitHub All Releases](https://img.shields.io/github/downloads/darrenparkinson/wtr/total) -->
 
